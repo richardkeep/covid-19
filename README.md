@@ -4,7 +4,7 @@ An app to display Covid-19 stats from different countries. [Check Live Demo](htt
 
 Developed using [Laravel](https://laravel.com), [Laravel-livewire](https://laravel-livewire.com/), [Sushi](https://github.com/calebporzio/sushi) and [TailwindCSS](https://tailwindcss.com/).
 
-![Screenshot from 2020-03-17 12-55-58](https://user-images.githubusercontent.com/3874381/76844665-aef12b00-684e-11ea-94c3-b1cc1d8601e1.png)
+![Screenshot from 2020-03-18 11-57-30](https://user-images.githubusercontent.com/3874381/76943020-b9bfc480-690f-11ea-95e9-3cfad2697d94.png)
 
 ## Installation
 - Clone the repo `git clone https://github.com/richardkeep/covid-19.git`
@@ -15,7 +15,6 @@ Developed using [Laravel](https://laravel.com), [Laravel-livewire](https://larav
 ## Todo (Send Pull requests pls!)
 - Add filters to sort by Cases, Deaths, Recovered, Today Cases, Today Deaths, and Critical, etc
 - Use [Alpinejs](https://github.com/alpinejs/alpine) to clear the search input.
-- Display the cards horizontally on large screens.
 - Add some cool animations and transitions.
 
 ## Credits
