@@ -42,7 +42,7 @@
                             <div class="flex justify-between">
                                 <span class="mr-1  text-gray-500 font-bold text-xl font-bold">{{ $country->id }}.</span>
                                 <span class="flex-1 tracking-wide text-blue-700 font-bold text-xl">{{ $country->country }}</span>
-                                <span>{{ $country->emoji() }}</span>
+                                <span class="text-2xl">{{ $country->emoji() }}</span>
                             </div>
                             <div class="flex flex-row justify-between mt-3">
                                 <div class="flex flex-col">
