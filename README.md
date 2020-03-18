@@ -17,7 +17,5 @@ Developed using [Laravel](https://laravel.com), [Laravel-livewire](https://larav
 - Use [Alpinejs](https://github.com/alpinejs/alpine) to clear the search input.
 - Add some cool animations and transitions.
 
-## Credits
-Credit goes to [NovelCOVID](https://github.com/NovelCOVID/API) for the creating the free API. The source of the API data is [woldometer](https://www.worldometers.info/coronavirus/).
-
-
+## API
+https://github.com/richardkeep/covid-19-api
