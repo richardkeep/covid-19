@@ -4,7 +4,7 @@ An app to display Covid-19 stats from different countries. [Check Live Demo](htt
 
 Developed using [Laravel](https://laravel.com), [Laravel-livewire](https://laravel-livewire.com/), [Sushi](https://github.com/calebporzio/sushi) and [TailwindCSS](https://tailwindcss.com/).
 
-![Screenshot from 2020-03-18 11-57-30](https://user-images.githubusercontent.com/3874381/76943020-b9bfc480-690f-11ea-95e9-3cfad2697d94.png)
+![Screenshot from 2020-03-18 13-26-58](https://user-images.githubusercontent.com/3874381/76951131-3bb5ea80-691c-11ea-88c0-7df225ded2c2.png)
 
 ## Installation
 - Clone the repo `git clone https://github.com/richardkeep/covid-19.git`

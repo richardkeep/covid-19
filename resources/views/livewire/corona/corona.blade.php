@@ -12,16 +12,16 @@
                 <div class="flex justify-center mt-8">
                     <div class="xs:w-1/2 p-4 flex flex-row justify-between xs:text-sm md:text-xl items-center bg-gray-700 rounded-md">
                         <div class="m-2">
-                            <span class="text-gray-200 uppercase">Cases:</span>
+                            <span class="text-gray-500 tracking-wide uppercase">Cases:</span>
                             <span class="font-bold text-purple-300">{{ number_format($summary['cases']) }}</span>
                         </div>
                         <div class="m-2">
-                            <span class="text-gray-200 uppercase">Deaths:</span>
-                            <span class="text-red-400 font-bold">{{ number_format($summary['deaths']) }}</span>
+                            <span class="text-gray-500 tracking-wide uppercase">Deaths:</span>
+                            <span class="text-red-500 font-bold">{{ number_format($summary['deaths']) }}</span>
                         </div>
                         <div class="m-2">
-                            <span class="text-gray-200 uppercase">Recovered:</span>
-                            <span class="text-green-700 font-bold">{{ number_format($summary['recovered']) }}</span>
+                            <span class="text-gray-500 tracking-wide uppercase">Recovered:</span>
+                            <span class="text-green-300 font-bold">{{ number_format($summary['recovered']) }}</span>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,11 @@
                 <div class="w-full flex justify-center flex-wrap">
                     @foreach($countries as $country)
                         <div class="p-4 m-4 w-full md:w-1/2 lg:w-1/4 bg-gray-300 rounded-md"">
-                            <div class="tracking-wide text-blue-700 font-bold text-xl font-normal">{{ $country->id }}. {{ $country->country }}</div>
+                            <div class="flex justify-between">
+                                <span class="mr-1  text-gray-500 font-bold text-xl font-bold">{{ $country->id }}.</span>
+                                <span class="flex-1 tracking-wide text-blue-700 font-bold text-xl">{{ $country->country }}</span>
+                                <span>{{ $country->emoji() }}</span>
+                            </div>
                             <div class="flex flex-row justify-between mt-3">
                                 <div class="flex flex-col">
                                     <div class="mb-3">
