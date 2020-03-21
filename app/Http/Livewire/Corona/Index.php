@@ -14,21 +14,29 @@ class Index extends Component
 
     public $search = '';
 
+    public $field = 'deaths';
+
+    public $direction = 'desc';
+
     public function mount()
     {
         $this->countries = Corona::all();
         $this->summary = Summary::first();
     }
 
-    public function updatedSearch()
+    public function updated($name)
     {
-        if ($this->search == '') {
-            $this->countries = Corona::all();
+        $query = Corona::query();
 
-            return false;
+        if (in_array($name, ['field', 'direction'])) {
+            $query->orderBy($this->field, $this->direction);
         }
 
-        $this->countries = Corona::where('country', 'like', '%'.strtolower($this->search).'%')->get();
+        if ($name == 'search' || $this->search != '') {
+            $query->where('country', 'like', '%'.strtolower($this->search).'%');
+        }
+
+        $this->countries = $query->get();
     }
 
     public function render()

@@ -36,6 +36,21 @@
                     @endif
                 </div>
 
+                <div class="mt-4 flex justify-center items-baseline">
+                    <select wire:model="field" class="p-3 mr-3 w-full md:w-1/3 outline-none mt-2 rounded-md">
+                        <option value="cases">Total Cases</option>
+                        <option value="deaths">Total Deaths</option>
+                        <option value="todayCases">Today Cases</option>
+                        <option value="todayDeaths">Today Deaths</option>
+                        <option value="recovered">Recovered</option>
+                        <option value="critical">Critical</option>
+                    </select>
+                    <select wire:model="direction" class="p-3 w-full md:w-1/3 outline-none mt-2 rounded-md">
+                        <option value="desc">Descending</option>
+                        <option value="asc">Ascending</option>
+                    </select>
+                </div>
+
                 <div class="w-full flex justify-center flex-wrap">
                     @foreach($countries as $country)
                         <div class="p-4 m-4 w-full md:w-1/2 lg:w-1/4 bg-gray-300 rounded-md"">

@@ -45,6 +45,8 @@ class Corona extends Model
     {
         $country = array_key_exists($this->country, $this->mappings) ? $this->mappings[$this->country] : $this->country;
 
-        return collect(json_decode(file_get_contents(public_path('flags.json')), true))->firstWhere('name', $country)['emoji'];
+        return collect(
+            json_decode(file_get_contents(public_path('flags.json')), true)
+        )->firstWhere('name', $country)['emoji'];
     }
 }
