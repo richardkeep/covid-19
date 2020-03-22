@@ -18,21 +18,25 @@ class Index extends Component
 
     public $direction = 'desc';
 
+    protected $listeners = ['toggleDirection'];
+
     public function mount()
     {
         $this->countries = Corona::all();
         $this->summary = Summary::first();
     }
 
-    public function updated($name)
+    public function toggleDirection()
     {
-        $query = Corona::query();
+        $this->direction = $this->direction == 'desc' ? 'asc' : 'desc';
+        $this->updated();
+    }
 
-        if (in_array($name, ['field', 'direction'])) {
-            $query->orderBy($this->field, $this->direction);
-        }
+    public function updated()
+    {
+        $query = Corona::orderBy($this->field, $this->direction);
 
-        if ($name == 'search' || $this->search != '') {
+        if ($this->search != '') {
             $query->where('country', 'like', '%'.strtolower($this->search).'%');
         }
 

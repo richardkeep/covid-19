@@ -13,7 +13,6 @@ Developed using [Laravel](https://laravel.com), [Laravel-livewire](https://larav
 - You are all set to go. Visit http://127.0.0.1:8000/ to view the latest Covid-19 Stats
 
 ## Todo (Send Pull requests pls!)
-- Use [Alpinejs](https://github.com/alpinejs/alpine) to clear the search input.
 - Add some cool animations and transitions.
 
 ## API
