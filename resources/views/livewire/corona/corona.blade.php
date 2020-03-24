@@ -9,23 +9,32 @@
                 <div class="mt-4 text-center">
                     <a class="text-blue-900 text-xs" target="_blank" href="https://github.com/richardkeep/covid-19">View Source Code</a>
                 </div>
-                <div class="flex justify-center mt-3">
-                    <div class="xs:w-1/2 p-4 flex flex-row justify-between xs:text-sm md:text-xl items-center bg-gray-700 rounded-md">
-                        <div class="m-2">
-                            <span class="text-gray-500 tracking-wide uppercase">Cases:</span>
-                            <span class="font-bold text-purple-300">{{ number_format($summary['cases']) }}</span>
-                        </div>
-                        <div class="m-2">
-                            <span class="text-gray-500 tracking-wide uppercase">Deaths:</span>
-                            <span class="text-red-500 font-bold">{{ number_format($summary['deaths']) }}</span>
-                        </div>
-                        <div class="m-2">
-                            <span class="text-gray-500 tracking-wide uppercase">Recovered:</span>
-                            <span class="text-green-300 font-bold">{{ number_format($summary['recovered']) }}</span>
-                        </div>
+                <div class="hidden md:grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-3">
+                    <div class="flex flex-col bg-gray-400 p-3 rounded-md shadow-md border border-gray-400">
+                        <span class="text-gray-700 tracking-wide uppercase">Today Cases</span>
+                        <span class="mt-1 font-bold text-gray-800">{{ number_format($summary->todayCases) }}</span>
+                    </div>
+                    <div class="flex flex-col bg-gray-400 p-3 rounded-md shadow-md border border-gray-400">
+                        <span class="text-gray-700 tracking-wide uppercase">Today Deaths</span>
+                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary->todayDeaths) }}</span>
+                    </div>
+                    <div class="flex flex-col bg-gray-300 p-3 rounded-md shadow-md border border-gray-400">
+                        <span class="text-gray-500 tracking-wide uppercase">Total Cases</span>
+                        <span class="mt-1 font-bold text-gray-900">{{ number_format($summary->cases) }}</span>
+                    </div>
+                    <div class="flex flex-col bg-gray-300 p-3 rounded-md shadow-md border border-gray-400">
+                        <span class="text-gray-500 tracking-wide uppercase">Total Deaths</span>
+                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary->deaths) }}</span>
+                    </div>
+                    <div class="flex flex-col bg-gray-300 p-3 rounded-md shadow-md border border-gray-400">
+                        <span class="text-gray-500 tracking-wide uppercase">Recovered</span>
+                        <span class="mt-1 text-green-500 font-bold">{{ number_format($summary->recovered) }}</span>
+                    </div>
+                    <div class="flex flex-col bg-gray-300 p-3 rounded-md shadow-md border border-gray-400">
+                        <span class="text-gray-500 tracking-wide uppercase">Critical</span>
+                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary->critical) }}</span>
                     </div>
                 </div>
-
 
                 <div class="mt-4 pt-3 md:pt-0 w-full md:w-1/2 max-w-md mx-auto md:ml-auto order-3">
                     <div class="relative max-w-3xl mx-auto px-4">
@@ -65,18 +74,18 @@
                 </div>
 
 
-                <div class="my-4 mx-2 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                <div class="my-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                     @foreach($countries as $country)
                         <div class="p-4 w-full bg-gray-300 rounded-md"">
                             <div class="flex justify-between">
-                                <span class="mr-1  text-gray-500 font-bold text-xl font-bold">{{ $country->id }}.</span>
-                                <span class="flex-1 tracking-wide text-blue-700 font-bold text-xl">{{ $country->country }}</span>
+                                <span class="mr-1 text-gray-500 font-bold text-xl font-bold">{{ $country->id }}.</span>
+                                <span class="flex-1 font-bold leading-5 text-blue-800 text-xl tracking-wide">{{ $country->country }}</span>
                                 <span class="text-2xl">{{ $country->emoji }}</span>
                             </div>
                             <div class="flex flex-row justify-between mt-3">
                                 <div class="flex flex-col">
                                     <div class="mb-2">
-                                        <span class="text-base md:text-sm text-gray-700">Cases: </span>
+                                        <span class=md:text-sm text-gray-700">Cases: </span>
                                         <span class="md:text-sm font-bold">{{ number_format($country->cases) }}</span>
                                     </div>
                                     <div class="mb-2">

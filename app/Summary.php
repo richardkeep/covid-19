@@ -14,8 +14,8 @@ class Summary extends Model
 
     public function getRows()
     {
-        return Cache::remember('summary', Carbon::parse('10 minutes'), function () {
-            return [Http::get('https://corona.lmao.ninja/all')->json()];
+        return Cache::remember('covid-19-summary', Carbon::parse('10 minutes'), function () {
+            return [Http::get('https://corona.richardkeep.dev/all')->json()];
         });
     }
 }
