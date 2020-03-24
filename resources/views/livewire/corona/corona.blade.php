@@ -65,18 +65,18 @@
                 </div>
 
 
-                <div class="w-full flex justify-center flex-wrap">
+                <div class="my-4 mx-2 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                     @foreach($countries as $country)
-                        <div class="p-4 m-4 w-full md:w-1/2 lg:w-1/4 bg-gray-300 rounded-md"">
+                        <div class="p-4 w-full bg-gray-300 rounded-md"">
                             <div class="flex justify-between">
                                 <span class="mr-1  text-gray-500 font-bold text-xl font-bold">{{ $country->id }}.</span>
                                 <span class="flex-1 tracking-wide text-blue-700 font-bold text-xl">{{ $country->country }}</span>
-                                <span class="text-2xl">{{ $country->emoji() }}</span>
+                                <span class="text-2xl">{{ $country->emoji }}</span>
                             </div>
                             <div class="flex flex-row justify-between mt-3">
                                 <div class="flex flex-col">
                                     <div class="mb-2">
-                                        <span class="md:text-sm text-gray-700">Cases: </span>
+                                        <span class="text-base md:text-sm text-gray-700">Cases: </span>
                                         <span class="md:text-sm font-bold">{{ number_format($country->cases) }}</span>
                                     </div>
                                     <div class="mb-2">

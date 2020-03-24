@@ -41,7 +41,7 @@ class Corona extends Model
         });
     }
 
-    public function emoji()
+    public function getEmojiAttribute()
     {
         $country = array_key_exists($this->country, $this->mappings) ? $this->mappings[$this->country] : $this->country;
 
