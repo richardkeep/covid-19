@@ -1,10 +1,10 @@
 # Covid-19 Stats App
 
-An app to display Covid-19 stats from different countries. [Check Live Demo](https://richardkeep.dev/)
+A web application to display Coronavirus Diseases (COVID19) statistics from different countries. [Check Live Demo](https://richardkeep.dev/)
 
-Developed using [Laravel](https://laravel.com), [Laravel-livewire](https://laravel-livewire.com/), [Sushi](https://github.com/calebporzio/sushi), [Alpinejs](https://github.com/alpinejs/alpine) and [TailwindCSS](https://tailwindcss.com/).
+Developed using  [TailwindCSS](https://tailwindcss.com/), [Alpinejs](https://github.com/alpinejs/alpine), [Laravel](https://laravel.com), [Livewire](https://laravel-livewire.com/) **T.A.L.L Stack**  💪
 
-![Screenshot from 2020-03-24 23-45-54](https://user-images.githubusercontent.com/3874381/77475311-a938ae00-6e29-11ea-9ae8-233249766113.png)
+![Screenshot from 2020-03-25 12-51-16](https://user-images.githubusercontent.com/3874381/77523812-631a3380-6e97-11ea-8ad8-8de9a0c1cf46.png)
 
 
 ## Installation
