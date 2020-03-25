@@ -3,7 +3,7 @@
         <div class="flex justify-around h-full">
             <div class="min-w-full px-4 my-4">
                 <div class="flex justify-between items-center">
-                    <div class="flex flex-col md:flex-row items-center h-8">
+                    <div class="flex flex-col flex-1 md:flex-row items-center h-8">
                         <div class="text-gray-700 uppercase font-bold tracking-wider text-base md:text-2xl">
                            <span>{{ config('app.name', 'Laravel') }}</span>
                         </div>
