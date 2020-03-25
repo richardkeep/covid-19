@@ -26,6 +26,12 @@ class Index extends Component
         $this->summary = Summary::first();
     }
 
+    public function clearSearch()
+    {
+        $this->search = '';
+        $this->updated();
+    }
+
     public function toggleDirection()
     {
         $this->direction = $this->direction == 'desc' ? 'asc' : 'desc';

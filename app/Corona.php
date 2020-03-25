@@ -24,19 +24,23 @@ class Corona extends Model
         'North Macedonia' => 'Macedonia',
         'Macao' => 'Macau SAR China',
         'DRC' => 'Congo - Kinshasa',
+        'Congo' => 'Congo - Kinshasa',
         'Saint Martin' => 'St. Martin',
         'Saint Lucia' => 'St. Lucia',
-        'St. Barth' => 'St. Barthélemy',
         'Trinidad and Tobago' => 'Trinidad & Tobago',
         'Antigua and Barbuda' => 'Antigua & Barbuda',
         'Ivory Coast' => 'Côte d’Ivoire',
         'St. Vincent Grenadines' => 'St. Vincent & Grenadines',
         'Faeroe Islands' => 'Faroe Islands',
+        'Turks and Caicos' => 'Turks & Caicos Islands',
+        'Myanmar' => 'Myanmar (Burma)',
+        'Cabo Verde' => 'Cape Verde',
+        'CAR' => 'Central African Republic',
     ];
 
     public function getRows()
     {
-        return Cache::remember('covid19', Carbon::parse('10 minutes'), function () {
+        return Cache::remember('covid19', Carbon::parse('20 minutes'), function () {
             return Http::get('https://corona.richardkeep.dev/countries')->json();
         });
     }

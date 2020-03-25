@@ -13,9 +13,12 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <livewire:styles />
+
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
+    <livewire:scripts />
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none">
     <livewire:corona.index />
 </body>
-<livewire:scripts />
 </html>
