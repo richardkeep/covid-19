@@ -21,10 +21,6 @@
                         </a>
                         </div>
                     </div>
-
-                    <div class="bg-white" wire:loading>
-                        <img class="h-8" src="/images/loading.gif" alt="Loading">
-                    </div>
                 </div>
                 <div class="hidden md:grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-4">
                     <div class="flex flex-col p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">

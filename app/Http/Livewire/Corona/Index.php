@@ -18,7 +18,7 @@ class Index extends Component
 
     public $direction = 'desc';
 
-    protected $listeners = ['toggleDirection'];
+    protected $listeners = ['toggleDirection', 'refreshData' => '$refresh'];
 
     public function mount()
     {

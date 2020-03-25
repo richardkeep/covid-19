@@ -17,6 +17,11 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     <livewire:scripts />
+    <script>
+        setInterval(() => {
+            window.livewire.emit('refreshData')
+        }, 60 * 1000)
+    </script>
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none">
     <livewire:corona.index />
