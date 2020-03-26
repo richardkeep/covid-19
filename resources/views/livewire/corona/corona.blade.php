@@ -24,28 +24,28 @@
                 </div>
                 <div class="hidden md:grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-4">
                     <div class="flex flex-col p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
-                        <span class="text-gray-700 tracking-widest uppercase">Today Cases</span>
-                        <span class="mt-1 font-bold text-gray-800">{{ number_format($summary->todayCases) }}</span>
+                    <span class="text-gray-700 tracking-widest uppercase">Today Cases</span>
+                        <span class="mt-1 font-bold text-gray-800">{{ number_format($todayCases) }}</span>
                     </div>
                     <div class="flex flex-col p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
                         <span class="text-gray-700 tracking-widest uppercase">Today Deaths</span>
-                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary->todayDeaths) }}</span>
+                        <span class="mt-1 text-red-500 font-bold">{{ number_format($todayDeaths) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
                         <span class="text-gray-500 tracking-widest uppercase">Total Cases</span>
-                        <span class="mt-1 font-bold text-gray-900">{{ number_format($summary->cases) }}</span>
+                        <span class="mt-1 font-bold text-gray-900">{{ number_format($cases) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
                         <span class="text-gray-500 tracking-widest uppercase">Total Deaths</span>
-                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary->deaths) }}</span>
+                        <span class="mt-1 text-red-500 font-bold">{{ number_format($deaths) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
                         <span class="text-gray-500 tracking-widest uppercase">Recovered</span>
-                        <span class="mt-1 text-green-500 font-bold">{{ number_format($summary->recovered) }}</span>
+                        <span class="mt-1 text-green-500 font-bold">{{ number_format($recovered) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
                         <span class="text-gray-500 tracking-widest uppercase">Critical</span>
-                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary->critical) }}</span>
+                        <span class="mt-1 text-red-500 font-bold">{{ number_format($critical) }}</span>
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@
                                     <div class="absolute h-10 mt-1 left-0 top-0 flex items-center pl-4">
                                         <svg class="h-4 w-4 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path></svg>
                                     </div>
-                                    <input wire:model="search" placeholder="Search Country" class="block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow text-gray-500 font-bold rounded-lg pl-12 pr-4 py-3">
+                                    <input wire:model.debounce.1s="search" placeholder="Search Country" class="block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow text-gray-500 font-bold rounded-lg pl-12 pr-4 py-3">
                                     @if(strlen($search))
                                     <div class="absolute h-10 mt-1 right-0 top-0 flex items-center pr-4">
                                         <svg wire:click="clearSearch" class="cursor-pointer h-4 w-4 fill-current text-gray-600" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

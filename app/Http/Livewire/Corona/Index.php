@@ -5,12 +5,24 @@ namespace App\Http\Livewire\Corona;
 use App\Corona;
 use App\Summary;
 use Livewire\Component;
+use App\Realtime\RealtimeCorona;
+use App\Realtime\RealtimeSummary;
 
 class Index extends Component
 {
     public $countries = [];
 
-    public $summary = [];
+    public $cases;
+
+    public $deaths;
+
+    public $todayDeaths;
+
+    public $todayCases;
+
+    public $recovered;
+
+    public $critical;
 
     public $search = '';
 
@@ -18,12 +30,34 @@ class Index extends Component
 
     public $direction = 'desc';
 
-    protected $listeners = ['toggleDirection', 'refreshData' => '$refresh'];
+    protected $listeners = [
+        'toggleDirection',
+        'refreshData' => '$refresh',
+        'echo:corona,ApiUpdatedEvent' => 'apiUpdated',
+    ];
 
     public function mount()
     {
         $this->countries = Corona::all();
-        $this->summary = Summary::first();
+        $summary = Summary::first();
+        $this->setSummary($summary);
+    }
+
+    protected function setSummary($summary)
+    {
+        $this->cases = $summary->cases;
+        $this->deaths = $summary->deaths;
+        $this->todayDeaths = $summary->todayDeaths;
+        $this->todayCases = $summary->todayCases;
+        $this->recovered = $summary->recovered;
+        $this->critical = $summary->critical;
+    }
+
+    public function apiUpdated($data)
+    {
+        $this->countries = RealtimeCorona::all();
+        $summary = RealtimeSummary::first();
+        $this->setSummary($summary);
     }
 
     public function clearSearch()
