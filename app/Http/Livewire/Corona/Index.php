@@ -5,59 +5,36 @@ namespace App\Http\Livewire\Corona;
 use App\Corona;
 use App\Summary;
 use Livewire\Component;
-use App\Realtime\RealtimeCorona;
-use App\Realtime\RealtimeSummary;
 
 class Index extends Component
 {
-    public $countries = [];
+    public $countries;
 
-    public $cases;
-
-    public $deaths;
-
-    public $todayDeaths;
-
-    public $todayCases;
-
-    public $recovered;
-
-    public $critical;
+    public $summary;
 
     public $search = '';
 
     public $field = 'deaths';
 
-    public $direction = 'desc';
+    public $order = 'desc';
 
     protected $listeners = [
-        'toggleDirection',
-        'refreshData' => '$refresh',
-        'echo:corona,ApiUpdatedEvent' => 'apiUpdated',
+        'toggleOrder',
+        'echo:corona,ApiUpdatedEvent' => '$refresh',
+    ];
+
+    protected $updatesQueryString = [
+        'search',
+        'field',
+        'order',
     ];
 
     public function mount()
     {
-        $this->countries = Corona::all();
-        $summary = Summary::first();
-        $this->setSummary($summary);
-    }
+        $this->fill(request()->only('search', 'field', 'order'));
 
-    protected function setSummary($summary)
-    {
-        $this->cases = $summary->cases;
-        $this->deaths = $summary->deaths;
-        $this->todayDeaths = $summary->todayDeaths;
-        $this->todayCases = $summary->todayCases;
-        $this->recovered = $summary->recovered;
-        $this->critical = $summary->critical;
-    }
-
-    public function apiUpdated($data)
-    {
-        $this->countries = RealtimeCorona::all();
-        $summary = RealtimeSummary::first();
-        $this->setSummary($summary);
+        $this->countries = $this->fetchCountries();
+        $this->summary = Summary::first();
     }
 
     public function clearSearch()
@@ -66,21 +43,25 @@ class Index extends Component
         $this->updated();
     }
 
-    public function toggleDirection()
+    public function toggleOrder()
     {
-        $this->direction = $this->direction == 'desc' ? 'asc' : 'desc';
+        $this->order = $this->order == 'desc' ? 'asc' : 'desc';
         $this->updated();
+    }
+
+    protected function fetchCountries()
+    {
+        return Corona::query()
+            ->orderBy($this->field, $this->order)
+            ->when($this->search, function ($query) {
+                return $query->where('country', 'like', '%'.$this->search.'%');
+            })
+            ->get();
     }
 
     public function updated()
     {
-        $query = Corona::orderBy($this->field, $this->direction);
-
-        if ($this->search != '') {
-            $query->where('country', 'like', '%'.strtolower($this->search).'%');
-        }
-
-        $this->countries = $query->get();
+        $this->countries = $this->fetchCountries();
     }
 
     public function render()

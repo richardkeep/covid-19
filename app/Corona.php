@@ -14,8 +14,8 @@ class Corona extends Model
 
     public function getRows()
     {
-        return Cache::remember('covid192', Carbon::parse('1 minute'), function () {
-            return Http::get('https://corona.richardkeep.dev/countries')->json();
+        return Cache::remember('covid19', Carbon::parse('1 minute'), function () {
+            return Http::get('https://corona.richardkeep.dev/realtime/countries')->json();
         });
     }
 }

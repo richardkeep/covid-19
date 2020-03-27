@@ -28,7 +28,6 @@ class FetchSummaryData extends Command
      */
     public function handle()
     {
-        $this->comment('Fired at '.now());
         event(new ApiUpdatedEvent([]));
     }
 }
