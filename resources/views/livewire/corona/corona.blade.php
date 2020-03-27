@@ -24,7 +24,7 @@
                 </div>
                 <div class="hidden md:grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-4">
                     <div class="flex flex-col p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
-                    <span class="text-gray-700 tracking-widest uppercase">Today Cases</span>
+                        <span class="text-gray-700 tracking-widest uppercase">Today Cases</span>
                         <span class="mt-1 font-bold text-gray-800">{{ number_format($summary->todayCases) }}</span>
                     </div>
                     <div class="flex flex-col p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
@@ -87,7 +87,16 @@
                         <div x-data="{{ preg_replace('/"([^"]+)"\s*:\s*/', '$1:', $init) }}" class="flex justify-end">
                                 <svg @click="open = true" x-show="!open" class="h-10 w-4 cursor-pointer fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path></svg>
 
-                                 <div class="h-10 relative w-full max-w-3xl" x-show="open" @click.away="open = search.length > 0">
+                                 <div class="h-10 relative w-full max-w-3xl"
+                                    x-show="open"
+                                    x-transition:enter="transition ease-out duration-300"
+                                    x-transition:enter-start="opacity-0 transform scale-40"
+                                    x-transition:enter-end="opacity-100 transform scale-100"
+                                    x-transition:leave="transition ease-in duration-100"
+                                    x-transition:leave-start="opacity-100 transform scale-100"
+                                    x-transition:leave-end="opacity-0 transform scale-90"
+                                    @click.away="open = !!search.length"
+                                >
                                     <div class="absolute h-10 mt-1 left-0 top-0 flex items-center pl-4">
                                         <svg class="h-4 w-4 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path></svg>
                                     </div>
