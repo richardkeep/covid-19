@@ -28,6 +28,7 @@ class FetchSummaryData extends Command
      */
     public function handle()
     {
+        $this->comment('Refreshing API at '.now()->format('Y-m-d H:i:s'));
         event(new ApiUpdatedEvent([]));
     }
 }
