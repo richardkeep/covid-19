@@ -14,8 +14,6 @@ class Index extends Component
 
     public $search = '';
 
-    public $init;
-
     public $field = 'deaths';
 
     public $order = 'desc';
@@ -34,8 +32,6 @@ class Index extends Component
     public function mount()
     {
         $this->fill(request()->only('search', 'field', 'order'));
-
-        $this->init = json_encode(['open' => (bool) $this->search, 'search' => $this->search ?? '']);
 
         $this->countries = $this->fetchCountries();
         $this->summary = Summary::first();
