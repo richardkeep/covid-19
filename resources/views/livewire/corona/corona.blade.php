@@ -70,7 +70,7 @@
                         </select>
 
                         <div class="cursor-pointer" wire:click="$emit('toggleOrder')">
-                            @if($order == 'sortBy')
+                            @if($order == 'asc')
                            <svg class="h-4 w-4 fill-current text-gray-600" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <path d="M13,10 L13,2 L7,2 L7,10 L2,10 L10,18 L18,10 L13,10 Z" id="Combined-Shape"></path>
                             </svg>

@@ -13,7 +13,9 @@ class Index extends Component
 
     public $field = 'deaths';
 
-    public $order = 'sortByDesc';
+    public $order = 'desc';
+
+    private $sorting = 'sortByDesc';
 
     protected $listeners = [
         'toggleOrder',
@@ -39,14 +41,21 @@ class Index extends Component
 
     public function toggleOrder()
     {
-        $this->order = $this->order == 'sortByDesc' ? 'sortBy' : 'sortByDesc';
+        if ($this->order == 'desc') {
+            $this->order = 'asc';
+            $this->sorting = 'sortBy';
+        } else {
+            $this->order = 'desc';
+            $this->sorting = 'sortByDesc';
+        }
+
         $this->updated();
     }
 
     protected function fetchCountries()
     {
         return collect(Corona::api())
-        ->{$this->order}($this->field)
+        ->{$this->sorting}($this->field)
         ->when($this->search, function ($collection) {
             return $collection->filter(function ($obj) {
                 return Str::of(strtolower($obj['country']))->contains(strtolower($this->search));
