@@ -15,8 +15,6 @@ class Index extends Component
 
     public $order = 'desc';
 
-    private $sorting = 'sortByDesc';
-
     protected $listeners = [
         'toggleOrder',
         'echo:corona,ApiUpdatedEvent' => '$refresh',
@@ -41,26 +39,27 @@ class Index extends Component
 
     public function toggleOrder()
     {
-        if ($this->order == 'desc') {
-            $this->order = 'asc';
-            $this->sorting = 'sortBy';
-        } else {
-            $this->order = 'desc';
-            $this->sorting = 'sortByDesc';
-        }
+        $this->order = $this->order == 'desc' ? 'asc' : 'desc';
 
         $this->updated();
     }
 
     protected function fetchCountries()
     {
+        $sorter = app()->make('collection.multiSort', [
+            $this->field => $this->order,
+            'cases' => $this->order,
+            'recovered' => $this->order,
+        ]);
+
         return collect(Corona::api())
-        ->{$this->sorting}($this->field)
         ->when($this->search, function ($collection) {
             return $collection->filter(function ($obj) {
                 return Str::of(strtolower($obj['country']))->contains(strtolower($this->search));
             });
-        })->all();
+        })
+        ->sort($sorter)
+        ->all();
     }
 
     public function updated()
