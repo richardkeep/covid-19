@@ -15,6 +15,11 @@ class Index extends Component
 
     public $order = 'desc';
 
+    protected static $fields = [
+        'cases', 'todayCases', 'deaths',
+        'todayDeaths', 'recovered', 'critical',
+    ];
+
     protected $listeners = [
         'toggleOrder',
         'echo:corona,ApiUpdatedEvent' => '$refresh',
@@ -46,6 +51,10 @@ class Index extends Component
 
     protected function fetchCountries()
     {
+        if (! in_array($this->field, static::$fields)) {
+            return [];
+        }
+
         $sorter = app()->make('collection.multiSort', [
             $this->field => $this->order,
             'cases' => $this->order,
