@@ -5,18 +5,15 @@ namespace App\Http\Livewire\Corona;
 use App\Corona;
 use App\Summary;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class Index extends Component
 {
-    public $countries;
-
-    public $summary;
-
     public $search = '';
 
     public $field = 'deaths';
 
-    public $order = 'desc';
+    public $order = 'sortByDesc';
 
     protected $listeners = [
         'toggleOrder',
@@ -32,9 +29,6 @@ class Index extends Component
     public function mount()
     {
         $this->fill(request()->only('search', 'field', 'order'));
-
-        $this->countries = $this->fetchCountries();
-        $this->summary = Summary::first();
     }
 
     public function clearSearch()
@@ -45,18 +39,19 @@ class Index extends Component
 
     public function toggleOrder()
     {
-        $this->order = $this->order == 'desc' ? 'asc' : 'desc';
+        $this->order = $this->order == 'sortByDesc' ? 'sortBy' : 'sortByDesc';
         $this->updated();
     }
 
     protected function fetchCountries()
     {
-        return Corona::query()
-            ->orderBy($this->field, $this->order)
-            ->when($this->search, function ($query) {
-                return $query->where('country', 'like', '%'.$this->search.'%');
-            })
-            ->get();
+        return collect(Corona::api())
+        ->{$this->order}($this->field)
+        ->when($this->search, function ($collection) {
+            return $collection->filter(function ($obj) {
+                return Str::of(strtolower($obj['country']))->contains(strtolower($this->search));
+            });
+        })->all();
     }
 
     public function updated()
@@ -66,6 +61,9 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.corona.corona');
+        return view('livewire.corona.corona', [
+            'summary' => Summary::api(),
+            'countries' => $this->fetchCountries(),
+        ]);
     }
 }

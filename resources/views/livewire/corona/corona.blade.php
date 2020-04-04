@@ -25,27 +25,27 @@
                 <div class="hidden md:grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-4">
                     <div class="flex flex-col p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
                         <span class="text-gray-700 tracking-widest uppercase">Today Cases</span>
-                        <span class="mt-1 font-bold text-gray-800">{{ number_format($summary->todayCases) }}</span>
+                        <span class="mt-1 font-bold text-gray-800">{{ number_format($summary['todayCases']) }}</span>
                     </div>
                     <div class="flex flex-col p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
                         <span class="text-gray-700 tracking-widest uppercase">Today Deaths</span>
-                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary->todayDeaths) }}</span>
+                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['todayDeaths']) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
                         <span class="text-gray-500 tracking-widest uppercase">Total Cases</span>
-                        <span class="mt-1 font-bold text-gray-900">{{ number_format($summary->cases) }}</span>
+                        <span class="mt-1 font-bold text-gray-900">{{ number_format($summary['cases']) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
                         <span class="text-gray-500 tracking-widest uppercase">Total Deaths</span>
-                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary->deaths) }}</span>
+                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['deaths']) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
                         <span class="text-gray-500 tracking-widest uppercase">Recovered</span>
-                        <span class="mt-1 text-green-500 font-bold">{{ number_format($summary->recovered) }}</span>
+                        <span class="mt-1 text-green-500 font-bold">{{ number_format($summary['recovered']) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
                         <span class="text-gray-500 tracking-widest uppercase">Critical</span>
-                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary->critical) }}</span>
+                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['critical']) }}</span>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@
                         </select>
 
                         <div class="cursor-pointer" wire:click="$emit('toggleOrder')">
-                            @if($order == 'asc')
+                            @if($order == 'sortBy')
                            <svg class="h-4 w-4 fill-current text-gray-600" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <path d="M13,10 L13,2 L7,2 L7,10 L2,10 L10,18 L18,10 L13,10 Z" id="Combined-Shape"></path>
                             </svg>
@@ -107,35 +107,35 @@
                         <div class="p-4 w-full bg-gray-300 rounded-md hover:bg-blue-200 hover:shadow-lg">
                             <div class="flex justify-between">
                                 <span class="mr-1 text-gray-500 font-bold text-xl font-bold">{{ $loop->iteration }}.</span>
-                                <span class="flex-1 font-bold leading-5 text-blue-800 text-xl tracking-wide">{{ $country->country }}</span>
-                                <span class="text-2xl">{{ $country->emoji }}</span>
+                                <span class="flex-1 font-bold leading-5 text-blue-800 text-xl tracking-wide">{{ $country['country'] }}</span>
+                                <span class="text-2xl">{{ $country['emoji'] }}</span>
                             </div>
                             <div class="flex flex-row justify-between mt-3">
                                 <div class="flex flex-col">
                                     <div class="mb-2">
                                         <span class="md:text-sm text-gray-700">Cases: </span>
-                                        <span class="md:text-sm font-bold">{{ number_format($country->cases) }}</span>
+                                        <span class="md:text-sm font-bold">{{ number_format($country['cases']) }}</span>
                                     </div>
                                     <div class="mb-2">
                                         <span class="md:text-sm text-gray-700">Deaths: </span>
-                                        <span class="md:text-sm text-red-600 font-bold">{{ number_format($country->deaths) }}</span>
+                                        <span class="md:text-sm text-red-600 font-bold">{{ number_format($country['deaths']) }}</span>
                                     </div>
                                     <div class="">
                                         <span class="md:text-sm text-gray-700">Recovered: </span>
-                                        <span class="md:text-sm text-green-700 font-bold">{{ number_format($country->recovered) }}</span>
+                                        <span class="md:text-sm text-green-700 font-bold">{{ number_format($country['recovered']) }}</span>
                                     </div>
                                 </div>
                                 <div class="flex flex-col">
                                     <div class="mb-2">
                                         <span class="md:text-sm text-gray-700">Today Cases: </span>
-                                        <span class="md:text-sm font-bold">{{ number_format($country->todayCases) }}</span></div>
+                                        <span class="md:text-sm font-bold">{{ number_format($country['todayCases']) }}</span></div>
                                     <div class="mb-2">
                                         <span class="md:text-sm text-gray-700">Today Deaths: </span>
-                                        <span class="md:text-sm text-red-700 font-bold">{{ number_format($country->todayDeaths) }}</span>
+                                        <span class="md:text-sm text-red-700 font-bold">{{ number_format($country['todayDeaths']) }}</span>
                                     </div>
                                     <div class="">
                                         <span class="md:text-sm text-gray-700">Critical: </span>
-                                        <span class="md:text-sm text-red-400">{{ number_format($country->critical) }}</span>
+                                        <span class="md:text-sm text-red-400">{{ number_format($country['critical']) }}</span>
                                     </div>
                                 </div>
                             </div>
