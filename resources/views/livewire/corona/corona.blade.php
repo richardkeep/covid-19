@@ -24,27 +24,27 @@
                 </div>
                 <div class="hidden md:grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-4">
                     <div class="flex flex-col p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
-                        <span class="text-gray-700 tracking-widest uppercase">Today Cases</span>
+                    <span class="text-gray-700 tracking-widest uppercase">@lang('corona.today_cases')</span>
                         <span class="mt-1 font-bold text-gray-800">{{ number_format($summary['todayCases']) }}</span>
                     </div>
                     <div class="flex flex-col p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
-                        <span class="text-gray-700 tracking-widest uppercase">Today Deaths</span>
+                        <span class="text-gray-700 tracking-widest uppercase">@lang('corona.today_deaths')</span>
                         <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['todayDeaths']) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
-                        <span class="text-gray-500 tracking-widest uppercase">Total Cases</span>
+                        <span class="text-gray-500 tracking-widest uppercase">@lang('corona.total_deaths')</span>
                         <span class="mt-1 font-bold text-gray-900">{{ number_format($summary['cases']) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
-                        <span class="text-gray-500 tracking-widest uppercase">Total Deaths</span>
+                        <span class="text-gray-500 tracking-widest uppercase">@lang('corona.total_deaths')</span>
                         <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['deaths']) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
-                        <span class="text-gray-500 tracking-widest uppercase">Recovered</span>
+                        <span class="text-gray-500 tracking-widest uppercase">@lang('corona.recovered')</span>
                         <span class="mt-1 text-green-500 font-bold">{{ number_format($summary['recovered']) }}</span>
                     </div>
                     <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
-                        <span class="text-gray-500 tracking-widest uppercase">Critical</span>
+                        <span class="text-gray-500 tracking-widest uppercase">@lang('corona.critical')</span>
                         <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['critical']) }}</span>
                     </div>
                 </div>
@@ -58,14 +58,14 @@
                         <select wire:model="field" class="bg-gray-200 focus:bg-white focus:outline-none focus:shadow font-bold mr-3 mt-2 p-3 rounded-md text-gray-600 w-full">
 
                             <optgroup label="TODAY">
-                                <option value="todayCases">Today Cases</option>
-                                <option value="todayDeaths">Today Deaths</option>
+                                <option value="todayCases">@lang('corona.today_cases')</option>
+                                <option value="todayDeaths">@lang('corona.today_deaths')</option>
                             </optgroup>
                             <optgroup label="TOTAL">
-                                <option value="cases">Total Cases</option>
-                                <option value="deaths">Total Deaths</option>
-                                <option value="recovered">Recovered</option>
-                                <option value="critical">Critical</option>
+                                <option value="cases">@lang('corona.total_cases')</option>
+                                <option value="deaths">@lang('corona.total_deaths')</option>
+                                <option value="recovered">@lang('corona.recovered')</option>
+                                <option value="critical">@lang('corona.critical')</option>
                             </optgroup>
                         </select>
 
@@ -113,28 +113,28 @@
                             <div class="flex flex-row justify-between mt-3">
                                 <div class="flex flex-col">
                                     <div class="mb-2">
-                                        <span class="md:text-sm text-gray-700">Cases: </span>
+                                        <span class="md:text-sm text-gray-700">@lang('corona.total_cases'): </span>
                                         <span class="md:text-sm font-bold">{{ number_format($country['cases']) }}</span>
                                     </div>
                                     <div class="mb-2">
-                                        <span class="md:text-sm text-gray-700">Deaths: </span>
+                                        <span class="md:text-sm text-gray-700">@lang('corona.total_deaths'): </span>
                                         <span class="md:text-sm text-red-600 font-bold">{{ number_format($country['deaths']) }}</span>
                                     </div>
                                     <div class="">
-                                        <span class="md:text-sm text-gray-700">Recovered: </span>
+                                        <span class="md:text-sm text-gray-700">@lang('corona.recovered'): </span>
                                         <span class="md:text-sm text-green-700 font-bold">{{ number_format($country['recovered']) }}</span>
                                     </div>
                                 </div>
                                 <div class="flex flex-col">
                                     <div class="mb-2">
-                                        <span class="md:text-sm text-gray-700">Today Cases: </span>
+                                        <span class="md:text-sm text-gray-700">@lang('corona.today_cases'): </span>
                                         <span class="md:text-sm font-bold">{{ number_format($country['todayCases']) }}</span></div>
                                     <div class="mb-2">
-                                        <span class="md:text-sm text-gray-700">Today Deaths: </span>
+                                        <span class="md:text-sm text-gray-700">@lang('corona.today_deaths'): </span>
                                         <span class="md:text-sm text-red-700 font-bold">{{ number_format($country['todayDeaths']) }}</span>
                                     </div>
                                     <div class="">
-                                        <span class="md:text-sm text-gray-700">Critical: </span>
+                                        <span class="md:text-sm text-gray-700">@lang('corona.critical'): </span>
                                         <span class="md:text-sm text-red-400">{{ number_format($country['critical']) }}</span>
                                     </div>
                                 </div>
