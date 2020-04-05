@@ -6,10 +6,12 @@ return [
     'today_cases' => 'Hoy Casos',
     'today_deaths' => 'Hoy la Muerte',
 
-    'total_cases' => 'casos totales',
-    'total_deaths' => 'muerte totales',
+    'total_cases' => 'Casos Totales',
+    'total_deaths' => 'Muerte Totales',
 
     'recovered' => 'Recuperado',
 
-    'critical' => 'Crítica',
+    'critical' => 'Crítico',
+
+    'search_country' => 'Buscar país',
 ];

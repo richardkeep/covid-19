@@ -10,4 +10,6 @@ return [
     'recovered' => 'Recovered',
 
     'critical' => 'Critical',
+
+    'search_country' => 'Search Country',
 ];

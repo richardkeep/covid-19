@@ -6,6 +6,8 @@ use App\Corona;
 use App\Summary;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
 
 class Index extends Component
 {
@@ -14,6 +16,8 @@ class Index extends Component
     public $field = 'deaths';
 
     public $order = 'desc';
+
+    public $lang = 'en';
 
     protected static $fields = [
         'cases', 'todayCases', 'deaths',
@@ -33,7 +37,16 @@ class Index extends Component
 
     public function mount()
     {
+        $this->lang = Session::get('lang') ?: 'en';
+        Config(['app.locale' => $this->lang]);
         $this->fill(request()->only('search', 'field', 'order'));
+    }
+
+    public function updatedLang()
+    {
+        Session::put('lang', $this->lang);
+
+        Config(['app.locale' => $this->lang]);
     }
 
     public function clearSearch()
