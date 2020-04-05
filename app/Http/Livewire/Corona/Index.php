@@ -19,6 +19,10 @@ class Index extends Component
 
     public $lang = 'en';
 
+    public $summary;
+
+    public $countries;
+
     protected static $fields = [
         'cases', 'todayCases', 'deaths',
         'todayDeaths', 'recovered', 'critical',
@@ -33,20 +37,22 @@ class Index extends Component
         'search',
         'field',
         'order',
+        'lang',
     ];
 
     public function mount()
     {
-        $this->lang = Session::get('lang') ?: 'en';
-        Config(['app.locale' => $this->lang]);
-        $this->fill(request()->only('search', 'field', 'order'));
+        $this->fill(request()->only('search', 'field', 'order', 'lang'));
+
+        Session::put('lang', $this->lang);
+
+        $this->summary = Summary::api();
+        $this->countries = $this->fetchCountries();
     }
 
     public function updatedLang()
     {
         Session::put('lang', $this->lang);
-
-        Config(['app.locale' => $this->lang]);
     }
 
     public function clearSearch()
@@ -91,9 +97,8 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.corona.corona', [
-            'summary' => Summary::api(),
-            'countries' => $this->fetchCountries(),
-        ]);
+        Config(['app.locale' => Session::get('lang')]);
+
+        return view('livewire.corona.corona');
     }
 }
