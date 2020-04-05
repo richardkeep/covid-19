@@ -23,27 +23,27 @@
                     </div>
                 </div>
                 <div class="flex justify-between md:grid grid-cols-6 min-w-full mt-4 overflow-scroll md:overflow-hidden">
-                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
-                    <span class="text-gray-700 uppercase">@lang('corona.today_cases')</span>
+                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
+                    <span class="text-gray-700 font-extrabold uppercase">@lang('corona.today_cases')</span>
                         <span class="mt-1 font-bold text-gray-800">{{ number_format($summary['todayCases']) }}</span>
                     </div>
-                    <div class="mr-2 flex flex-col text-xs md:text-base p-3 flex-shrink-0 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
-                        <span class="text-gray-700 uppercase">@lang('corona.today_deaths')</span>
+                    <div class="mr-2 flex flex-col text-xs md:text-base p-3 flex-shrink-0 bg-gray-200 rounded-md border border-gray-600">
+                        <span class="text-gray-700 font-extrabold uppercase">@lang('corona.today_deaths')</span>
                         <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['todayDeaths']) }}</span>
                     </div>
-                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
+                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
                         <span class="text-gray-500 uppercase">@lang('corona.total_deaths')</span>
                         <span class="mt-1 font-bold text-gray-900">{{ number_format($summary['cases']) }}</span>
                     </div>
-                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
+                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
                         <span class="text-gray-500 uppercase">@lang('corona.total_deaths')</span>
                         <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['deaths']) }}</span>
                     </div>
-                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
+                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
                         <span class="text-gray-500 uppercase">@lang('corona.recovered')</span>
                         <span class="mt-1 text-green-500 font-bold">{{ number_format($summary['recovered']) }}</span>
                     </div>
-                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
+                    <div class="flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
                         <span class="text-gray-500 uppercase">@lang('corona.critical')</span>
                         <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['critical']) }}</span>
                     </div>
