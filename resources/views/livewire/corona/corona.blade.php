@@ -1,4 +1,4 @@
-<div class="flex flex-col">
+<div class="mr-2 flex flex-col text-xs">
     <div class="min-h-screen container mx-auto">
         <div class="flex justify-around h-full">
             <div class="min-w-full px-4 my-4">
@@ -22,29 +22,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="hidden md:grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-4">
-                    <div class="flex flex-col p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
-                    <span class="text-gray-700 tracking-widest uppercase">@lang('corona.today_cases')</span>
+                <div class="flex justify-between md:grid grid-cols-6 min-w-full mt-4 overflow-scroll md:overflow-hidden">
+                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
+                    <span class="text-gray-700 uppercase">@lang('corona.today_cases')</span>
                         <span class="mt-1 font-bold text-gray-800">{{ number_format($summary['todayCases']) }}</span>
                     </div>
-                    <div class="flex flex-col p-3 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
-                        <span class="text-gray-700 tracking-widest uppercase">@lang('corona.today_deaths')</span>
+                    <div class="mr-2 flex flex-col text-xs md:text-base p-3 flex-shrink-0 rounded-md border border-gray-400 shadow-sm hover:border-gray-900 hover:shadow-md">
+                        <span class="text-gray-700 uppercase">@lang('corona.today_deaths')</span>
                         <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['todayDeaths']) }}</span>
                     </div>
-                    <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
-                        <span class="text-gray-500 tracking-widest uppercase">@lang('corona.total_deaths')</span>
+                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
+                        <span class="text-gray-500 uppercase">@lang('corona.total_deaths')</span>
                         <span class="mt-1 font-bold text-gray-900">{{ number_format($summary['cases']) }}</span>
                     </div>
-                    <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
-                        <span class="text-gray-500 tracking-widest uppercase">@lang('corona.total_deaths')</span>
+                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
+                        <span class="text-gray-500 uppercase">@lang('corona.total_deaths')</span>
                         <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['deaths']) }}</span>
                     </div>
-                    <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
-                        <span class="text-gray-500 tracking-widest uppercase">@lang('corona.recovered')</span>
+                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
+                        <span class="text-gray-500 uppercase">@lang('corona.recovered')</span>
                         <span class="mt-1 text-green-500 font-bold">{{ number_format($summary['recovered']) }}</span>
                     </div>
-                    <div class="flex flex-col bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
-                        <span class="text-gray-500 tracking-widest uppercase">@lang('corona.critical')</span>
+                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 bg-gray-200 p-3 rounded-md shadow-sm hover:border hover:border-gray-400 hover:shadow-md">
+                        <span class="text-gray-500 uppercase">@lang('corona.critical')</span>
                         <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['critical']) }}</span>
                     </div>
                 </div>
@@ -86,12 +86,12 @@
                     <div class="w-full md:w-4/5 lg:w-1/3 pt-3">
                         <div class="flex justify-end">
                                  <div class="h-10 relative w-full max-w-3xl">
-                                    <div class="absolute h-10 mt-1 left-0 top-0 flex items-center pl-4">
+                                    <div class="absolute h-10 left-0 top-0 flex items-center pl-4">
                                         <svg class="h-4 w-4 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path></svg>
                                     </div>
                                     <input x-model="search" wire:model.debounce.1s="search" placeholder="Search Country" class="block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow text-gray-500 font-bold rounded-lg pl-12 pr-4 py-3">
                                     @if(strlen($search))
-                                    <div class="absolute h-10 mt-1 right-0 top-0 flex items-center pr-4">
+                                    <div class="absolute h-10 right-0 top-0 flex items-center pr-4">
                                         <svg wire:click="clearSearch" class="cursor-pointer h-4 w-4 fill-current text-gray-600" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                             <polygon points="10 8.58578644 2.92893219 1.51471863 1.51471863 2.92893219 8.58578644 10 1.51471863 17.0710678 2.92893219 18.4852814 10 11.4142136 17.0710678 18.4852814 18.4852814 17.0710678 11.4142136 10 18.4852814 2.92893219 17.0710678 1.51471863 10 8.58578644"></polygon>
                                         </svg>
@@ -106,36 +106,36 @@
                     @foreach($countries as $country)
                         <div class="p-4 w-full bg-gray-300 rounded-md hover:bg-blue-200 hover:shadow-lg">
                             <div class="flex justify-between">
-                                <span class="mr-1 text-gray-500 font-bold text-xl font-bold">{{ $loop->iteration }}.</span>
-                                <span class="flex-1 font-bold leading-5 text-blue-800 text-xl tracking-wide">{{ $country['country'] }}</span>
-                                <span class="text-2xl">{{ $country['emoji'] }}</span>
+                                <span class="mr-1 text-gray-500 font-bold text-base font-bold">{{ $loop->iteration }}.</span>
+                                <span class="flex-1 font-bold text-blue-800 text-base tracking-wide">{{ $country['country'] }}</span>
+                                <span class="text-lg">{{ $country['emoji'] }}</span>
                             </div>
-                            <div class="flex flex-row justify-between mt-3">
-                                <div class="flex flex-col">
+                            <div class="mr-2 flex flex-row justify-between mt-3">
+                                <div class="mr-2 flex flex-col text-xs">
                                     <div class="mb-2">
-                                        <span class="md:text-sm text-gray-700">@lang('corona.total_cases'): </span>
-                                        <span class="md:text-sm font-bold">{{ number_format($country['cases']) }}</span>
+                                        <span class="text-sm md:text-xs text-gray-700">@lang('corona.total_cases'): </span>
+                                        <span class="text-sm md:text-xs font-bold">{{ number_format($country['cases']) }}</span>
                                     </div>
                                     <div class="mb-2">
-                                        <span class="md:text-sm text-gray-700">@lang('corona.total_deaths'): </span>
-                                        <span class="md:text-sm text-red-600 font-bold">{{ number_format($country['deaths']) }}</span>
+                                        <span class="text-sm md:text-xs text-gray-700">@lang('corona.total_deaths'): </span>
+                                        <span class="text-sm md:text-xs text-red-600 font-bold">{{ number_format($country['deaths']) }}</span>
                                     </div>
                                     <div class="">
-                                        <span class="md:text-sm text-gray-700">@lang('corona.recovered'): </span>
-                                        <span class="md:text-sm text-green-700 font-bold">{{ number_format($country['recovered']) }}</span>
+                                        <span class="text-sm md:text-xs text-gray-700">@lang('corona.recovered'): </span>
+                                        <span class="text-sm md:text-xs text-green-700 font-bold">{{ number_format($country['recovered']) }}</span>
                                     </div>
                                 </div>
-                                <div class="flex flex-col">
+                                <div class="mr-2 flex flex-col text-xs">
                                     <div class="mb-2">
-                                        <span class="md:text-sm text-gray-700">@lang('corona.today_cases'): </span>
-                                        <span class="md:text-sm font-bold">{{ number_format($country['todayCases']) }}</span></div>
+                                        <span class="text-sm md:text-xs text-gray-700">@lang('corona.today_cases'): </span>
+                                        <span class="text-sm md:text-xs font-bold">{{ number_format($country['todayCases']) }}</span></div>
                                     <div class="mb-2">
-                                        <span class="md:text-sm text-gray-700">@lang('corona.today_deaths'): </span>
-                                        <span class="md:text-sm text-red-700 font-bold">{{ number_format($country['todayDeaths']) }}</span>
+                                        <span class="text-sm md:text-xs text-gray-700">@lang('corona.today_deaths'): </span>
+                                        <span class="text-sm md:text-xs text-red-700 font-bold">{{ number_format($country['todayDeaths']) }}</span>
                                     </div>
                                     <div class="">
-                                        <span class="md:text-sm text-gray-700">@lang('corona.critical'): </span>
-                                        <span class="md:text-sm text-red-400">{{ number_format($country['critical']) }}</span>
+                                        <span class="text-sm md:text-xs text-gray-700">@lang('corona.critical'): </span>
+                                        <span class="text-sm md:text-xs text-red-400">{{ number_format($country['critical']) }}</span>
                                     </div>
                                 </div>
                             </div>

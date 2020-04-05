@@ -17,6 +17,12 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     <livewire:scripts />
+    <style>
+            ::-webkit-scrollbar {
+                width: 0px;
+                background: transparent; /* make scrollbar transparent */
+            }
+    </style>
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none">
     <livewire:corona.index />
