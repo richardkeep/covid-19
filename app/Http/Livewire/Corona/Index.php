@@ -25,27 +25,15 @@ class Index extends Component
     ];
 
     protected $listeners = [
-        'toggleOrder',
         'echo:corona,ApiUpdatedEvent' => '$refresh',
     ];
 
-    protected $updatesQueryString = [
-        'search',
-        'field',
-        'order',
-        'lang',
-    ];
+    protected $updatesQueryString = ['search', 'field', 'order', 'lang'];
 
     public function mount()
     {
         $this->fill(request()->only('search', 'field', 'order', 'lang'));
-
         $this->summary = Summary::api();
-    }
-
-    public function clearSearch()
-    {
-        $this->search = '';
     }
 
     protected function fetchCountries()
@@ -60,14 +48,11 @@ class Index extends Component
             'recovered' => $this->order,
         ]);
 
-        return Corona::api()
-        ->sort($sorter)
-        ->when($this->search, function ($collection) {
-            return $collection->filter(function ($obj) {
-                return Str::of(strtolower($obj['country']))->contains(strtolower($this->search));
+        return Corona::api()->when($this->search, function ($collection) {
+            return $collection->filter(function ($row) {
+                return Str::of(strtolower($row['country']))->contains(strtolower($this->search));
             });
-        })
-        ->all();
+        })->sort($sorter)->all();
     }
 
     public function render()

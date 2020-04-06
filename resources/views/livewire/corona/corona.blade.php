@@ -28,7 +28,7 @@
                 </div>
                 <div class="flex justify-between md:grid grid-cols-6 min-w-full mt-4 overflow-scroll md:overflow-hidden">
                     <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
-                    <span class="text-gray-700 font-extrabold uppercase">@lang('corona.today_cases')</span>
+                        <span class="text-gray-700 font-extrabold uppercase">@lang('corona.today_cases')</span>
                         <span class="mt-1 font-bold text-gray-800">{{ number_format($summary['todayCases']) }}</span>
                     </div>
                     <div class="mr-2 flex flex-col text-xs md:text-base p-3 flex-shrink-0 bg-gray-200 rounded-md border border-gray-600">
@@ -96,7 +96,7 @@
                                     <input x-model="search" wire:model.debounce.1s="search" placeholder="{{ __('corona.search_country') }}" class="block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow text-gray-500 font-bold rounded-lg pl-12 pr-4 py-3">
                                     @if(strlen($search))
                                     <div class="absolute h-10 right-0 top-0 flex items-center pr-4">
-                                        <svg wire:click="clearSearch" class="cursor-pointer h-4 w-4 fill-current text-gray-600" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <svg wire:click.prevent="$set('search', '')" class="cursor-pointer h-4 w-4 fill-current text-gray-600" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                             <polygon points="10 8.58578644 2.92893219 1.51471863 1.51471863 2.92893219 8.58578644 10 1.51471863 17.0710678 2.92893219 18.4852814 10 11.4142136 17.0710678 18.4852814 18.4852814 17.0710678 11.4142136 10 18.4852814 2.92893219 17.0710678 1.51471863 10 8.58578644"></polygon>
                                         </svg>
                                     </div>
