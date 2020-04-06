@@ -36,7 +36,7 @@
                         <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['todayDeaths']) }}</span>
                     </div>
                     <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
-                        <span class="text-gray-500 uppercase">@lang('corona.total_deaths')</span>
+                        <span class="text-gray-500 uppercase">@lang('corona.total_cases')</span>
                         <span class="mt-1 font-bold text-gray-900">{{ number_format($summary['cases']) }}</span>
                     </div>
                     <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
