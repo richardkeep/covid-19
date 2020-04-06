@@ -6,8 +6,6 @@ use App\Corona;
 use App\Summary;
 use Livewire\Component;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Session;
 
 class Index extends Component
 {
@@ -20,8 +18,6 @@ class Index extends Component
     public $lang = 'en';
 
     public $summary;
-
-    public $countries;
 
     protected static $fields = [
         'cases', 'todayCases', 'deaths',
@@ -44,28 +40,12 @@ class Index extends Component
     {
         $this->fill(request()->only('search', 'field', 'order', 'lang'));
 
-        Session::put('lang', $this->lang);
-
         $this->summary = Summary::api();
-        $this->countries = $this->fetchCountries();
-    }
-
-    public function updatedLang()
-    {
-        Session::put('lang', $this->lang);
     }
 
     public function clearSearch()
     {
         $this->search = '';
-        $this->updated();
-    }
-
-    public function toggleOrder()
-    {
-        $this->order = $this->order == 'desc' ? 'asc' : 'desc';
-
-        $this->updated();
     }
 
     protected function fetchCountries()
@@ -90,15 +70,12 @@ class Index extends Component
         ->all();
     }
 
-    public function updated()
-    {
-        $this->countries = $this->fetchCountries();
-    }
-
     public function render()
     {
-        Config(['app.locale' => Session::get('lang')]);
+        config(['app.locale' => $this->lang]);
 
-        return view('livewire.corona.corona');
+        return view('livewire.corona.corona', [
+            'countries' => $this->fetchCountries(),
+        ]);
     }
 }
