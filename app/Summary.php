@@ -11,7 +11,7 @@ class Summary extends Model
 {
     public static function api()
     {
-        return Cache::remember('covid-19-summary', Carbon::parse('1 hour'), function () {
+        return Cache::remember('covid-19-summary', Carbon::parse('1 minute'), function () {
             return Http::get('https://corona.richardkeep.dev/all')->json();
         });
     }

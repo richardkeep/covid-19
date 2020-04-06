@@ -60,13 +60,13 @@ class Index extends Component
             'recovered' => $this->order,
         ]);
 
-        return collect(Corona::api())
+        return Corona::api()
+        ->sort($sorter)
         ->when($this->search, function ($collection) {
             return $collection->filter(function ($obj) {
                 return Str::of(strtolower($obj['country']))->contains(strtolower($this->search));
             });
         })
-        ->sort($sorter)
         ->all();
     }
 

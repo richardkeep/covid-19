@@ -11,8 +11,8 @@ class Corona extends Model
 {
     public static function api()
     {
-        return Cache::remember('covid19-countries', Carbon::parse('1 hour'), function () {
-            return Http::get('https://corona.richardkeep.dev/countries')->json();
+        return Cache::remember('covid19-countries', Carbon::parse('1 minute'), function () {
+            return collect(Http::get('https://corona.richardkeep.dev/countries')->json());
         });
     }
 }
