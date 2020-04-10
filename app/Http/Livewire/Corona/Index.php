@@ -24,10 +24,6 @@ class Index extends Component
         'todayDeaths', 'recovered', 'critical',
     ];
 
-    protected $listeners = [
-        'echo:corona,ApiUpdatedEvent' => '$refresh',
-    ];
-
     protected $updatesQueryString = ['search', 'field', 'order', 'lang'];
 
     public function mount()

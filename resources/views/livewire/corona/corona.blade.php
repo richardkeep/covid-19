@@ -1,4 +1,4 @@
-<div class="mr-2 flex flex-col text-xs">
+<div class="mr-2 flex flex-col text-xs" wire:poll.60s>
     <div class="min-h-screen container mx-auto">
         <div class="flex justify-around h-full">
             <div class="min-w-full px-4 my-4">
