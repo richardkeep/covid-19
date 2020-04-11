@@ -27,30 +27,54 @@
                     </div>
                 </div>
                 <div class="flex justify-between md:grid grid-cols-6 min-w-full mt-4 overflow-scroll md:overflow-hidden">
-                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
-                        <span class="text-gray-700 font-extrabold uppercase">@lang('corona.today_cases')</span>
-                        <span class="mt-1 font-bold text-gray-800">{{ number_format($summary['todayCases']) }}</span>
-                    </div>
-                    <div class="mr-2 flex flex-col text-xs md:text-base p-3 flex-shrink-0 bg-gray-200 rounded-md border border-gray-600">
-                        <span class="text-gray-700 font-extrabold uppercase">@lang('corona.today_deaths')</span>
-                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['todayDeaths']) }}</span>
-                    </div>
-                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
-                        <span class="text-gray-500 uppercase">@lang('corona.total_cases')</span>
-                        <span class="mt-1 font-bold text-gray-900">{{ number_format($summary['cases']) }}</span>
-                    </div>
-                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
-                        <span class="text-gray-500 uppercase">@lang('corona.total_deaths')</span>
-                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['deaths']) }}</span>
-                    </div>
-                    <div class="mr-2 flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
-                        <span class="text-gray-500 uppercase">@lang('corona.recovered')</span>
-                        <span class="mt-1 text-green-500 font-bold">{{ number_format($summary['recovered']) }}</span>
-                    </div>
-                    <div class="flex flex-col text-xs md:text-base flex-shrink-0 p-3 bg-gray-200 rounded-md border border-gray-600">
-                        <span class="text-gray-500 uppercase">@lang('corona.critical')</span>
-                        <span class="mt-1 text-red-500 font-bold">{{ number_format($summary['critical']) }}</span>
-                    </div>
+                    <x-stat>
+                        <x-slot name="title">
+                            @lang('corona.today_cases')
+                        </x-slot>
+                        <x-slot name="data">
+                            {{ number_format($summary['todayCases']) }}
+                        </x-slot>
+                    </x-stat>
+                     <x-stat danger>
+                        <x-slot name="title">
+                            @lang('corona.today_deaths')
+                        </x-slot>
+                        <x-slot name="data">
+                            {{ number_format($summary['todayDeaths']) }}
+                        </x-slot>
+                    </x-stat>
+                     <x-stat>
+                        <x-slot name="title">
+                            @lang('corona.total_cases')
+                        </x-slot>
+                        <x-slot name="data">
+                            {{ number_format($summary['cases']) }}
+                        </x-slot>
+                    </x-stat>
+                     <x-stat danger>
+                        <x-slot name="title">
+                            @lang('corona.total_deaths')
+                        </x-slot>
+                        <x-slot name="data">
+                            {{ number_format($summary['deaths']) }}
+                        </x-slot>
+                    </x-stat>
+                     <x-stat>
+                        <x-slot name="title">
+                            @lang('corona.recovered')
+                        </x-slot>
+                        <x-slot name="data">
+                            {{ number_format($summary['recovered']) }}
+                        </x-slot>
+                    </x-stat>
+                    <x-stat last>
+                        <x-slot name="title">
+                            @lang('corona.critical')
+                        </x-slot>
+                        <x-slot name="data">
+                            {{ number_format($summary['critical']) }}
+                        </x-slot>
+                    </x-stat>
                 </div>
 
                 <div class="flex justify-between items-center flex-col-reverse md:flex-row">

@@ -36,6 +36,10 @@
  * @import "components/forms";
  */
 
+ /* .stat-card {
+     @apply h-20 flex flex-col justify-between items-center md:text-base flex-shrink-0 p-2 pt-4 bg-gray-200 rounded-md border border-gray-600;
+ } */
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
